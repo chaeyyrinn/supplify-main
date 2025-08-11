@@ -1,63 +1,58 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="text-xl font-semibold text-[#000000]">Ajukan Produk</h2>
-    </x-slot>
+<div class="min-h-screen flex items-center justify-center bg-gray-50 py-10 px-4">
+    <div class="bg-white shadow-lg rounded-2xl max-w-5xl w-full grid grid-cols-1 md:grid-cols-2 overflow-hidden">
+        
+        <!-- Left Content -->
+        <div class="bg-[#FAE3AC] p-8 flex flex-col justify-center">
+            <p class="uppercase text-sm tracking-widest text-[#0A1B2F]">Kami Siap Membantu</p>
+            <h2 class="text-3xl font-bold text-[#0A1B2F] mt-2 leading-snug">
+                Ajukan Produk Anda<br> ke Suplify
+            </h2>
+            <p class="text-[#0A1B2F]/80 mt-4 text-sm">
+                Isi formulir di samping untuk mengajukan produk Anda agar dapat terhubung dengan pembeli yang tepat.
+            </p>
+            
+            <!-- Contact Info -->
+            <div class="mt-6 space-y-3">
+                <div class="flex items-center gap-3">
+                    <div class="bg-[#0A1B2F] p-2 rounded-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-[#FAE3AC]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14v7m0-7a4 4 0 100-8 4 4 0 000 8z" />
+                        </svg>
+                    </div>
+                    <span class="text-[#0A1B2F] text-sm">support@suplify.com</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="bg-[#0A1B2F] p-2 rounded-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-[#FAE3AC]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h2l3.6 7.59a1 1 0 00.92.58h6.96a1 1 0 00.92-.58L19 5h2" />
+                        </svg>
+                    </div>
+                    <span class="text-[#0A1B2F] text-sm">+62 812 3456 7890</span>
+                </div>
+            </div>
+        </div>
 
-    <div class="max-w-2xl mx-auto py-10 px-6">
-        <div class="bg-[#ffffff] shadow-lg rounded-xl p-8 border border-[#FAE3AC]/30">
-            <form action="{{ route('penjual.produk.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
+        <!-- Right Form -->
+        <div class="p-8">
+            <form action="{{ route('penjual.produk.store') }}" method="POST" enctype="multipart/form-data" class="space-y-4">
                 @csrf
+                <input type="text" name="nama_produk" placeholder="Nama Produk" class="w-full border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#FFDE63]">
+                <textarea name="deskripsi" placeholder="Deskripsi Produk" rows="3" class="w-full border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#FFDE63]"></textarea>
+                <input type="number" name="harga" placeholder="Harga" class="w-full border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#FFDE63]">
+                <input type="number" name="stok" placeholder="Stok" class="w-full border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#FFDE63]">
+                <input type="text" name="lokasi" placeholder="Lokasi" class="w-full border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#FFDE63]">
+                <input type="file" name="foto" class="w-full border border-gray-200 rounded-lg px-4 py-3 text-gray-500">
 
-                <!-- Nama Produk -->
-                <div>
-                    <label class="block text-[#000000] font-medium mb-1">Nama Produk</label>
-                    <input type="text" name="nama_produk" 
-                        class="w-full border border-black/40 bg-transparent text-white px-4 py-2 rounded-lg placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-[#FFDE63] focus:border-[#FFDE63] transition">
-                </div>
-
-                <!-- Deskripsi -->
-                <div class="block">
-                    <label class="block text-[#000000] font-medium mb-1">Deskripsi</label>
-                    <textarea name="deskripsi" rows="4"
-                        class="w-full border border-black/40 bg-transparent text-white px-4 py-2 rounded-lg placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-[#FFDE63] focus:border-[#FFDE63] transition"></textarea>
-                </div>
-
-                <!-- Harga -->
-                <div>
-                    <label class="block text-[#000000] font-medium mb-1">Harga</label>
-                    <input type="number" name="harga" min="0"
-                        class="w-full border border-black/40 bg-transparent text-white px-4 py-2 rounded-lg placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-[#FFDE63] focus:border-[#FFDE63] transition">
-                </div>
-
-                <!-- Foto -->
-                <div>
-                    <label class="block text-[#000000] font-medium mb-1">Foto</label>
-                    <input type="file" name="foto"
-                        class="w-full text-white border border-black/40 rounded-lg p-2 bg-transparent file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-[#FFDE63] file:text-[#0A1B2F] hover:file:bg-[#e6c94f] cursor-pointer">
-                </div>
-
-                <!-- Stok -->
-                <div>
-                    <label class="block text-[#000000] font-medium mb-1">Stok</label>
-                    <input type="number" name="stok"
-                        class="w-full border border-black/40 bg-transparent text-white px-4 py-2 rounded-lg placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-[#FFDE63] focus:border-[#FFDE63] transition">
-                </div>
-
-                <!-- Lokasi -->
-                <div>
-                    <label class="block text-[#000000] font-medium mb-1">Lokasi</label>
-                    <input type="text" name="lokasi"
-                        class="w-full border border-black/40 bg-transparent text-white px-4 py-2 rounded-lg placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-[#FFDE63] focus:border-[#FFDE63] transition">
-                </div>
-
-                <!-- Submit Button -->
-                <div class="text-right">
-                    <button type="submit" 
-                        class="bg-[#FFDE63] hover:bg-[#e6c94f] text-[#0A1B2F] px-6 py-2 rounded-lg font-semibold shadow-md transition">
-                        Kirim
-                    </button>
-                </div>
+                <button type="submit" class="w-full flex items-center justify-center gap-2 bg-[#0A1B2F] text-[#FAE3AC] font-semibold py-3 rounded-lg hover:bg-[#142842] transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                    Kirim Produk
+                </button>
             </form>
         </div>
     </div>
+</div>
 </x-app-layout>

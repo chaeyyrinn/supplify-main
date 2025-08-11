@@ -69,7 +69,7 @@
                     <input type="hidden" name="alamat_pengiriman" value="Alamat default pengguna (sementara)">
                     <button type="submit"
                         class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-xl text-center mt-2">
-                        Buy Now
+                        Beli Sekarang
                     </button>
                 </form>
             </div>
