@@ -26,6 +26,11 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+Route::get('/', function () {
+    return view('landing'); // kalau filenya resources/views/landing-page.blade.php
+});
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
